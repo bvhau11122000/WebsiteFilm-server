@@ -26,15 +26,9 @@ const addFavorite = async (req, res) => {
 const removeFavorite = async (req, res) => {
   try {
     const { favoriteId } = req.params;
-
     const favorite = await favoriteModel.deleteOne({
       _id: favoriteId
-    });
-    console.log(favorite);
-    // if (!favorite) return responseHandler.notfound(res);
-    
-    // await favorite.remove().exec();
-    console.log("HUHHUUU");
+    }); 
     responseHandler.ok(res);
   } catch {
     responseHandler.error(res);
@@ -52,8 +46,8 @@ const getFavoritesOfUser = async (req, res) => {
 };
 const getAll = async (req, res) => {
   try {
+    
     const favorite = await favoriteModel.find({});
-console.log(favorite);
     responseHandler.ok(res, favorite);
   } catch {
     responseHandler.error(res);

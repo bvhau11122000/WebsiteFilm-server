@@ -10,7 +10,6 @@ const create = async (req, res) => {
       movieId,
       ...req.body
     });
-    console.log(reviewModel)
     await review.save();
 
     responseHandler.created(res, { 
@@ -42,7 +41,6 @@ const getReviewsOfUser = async (req, res) => {
     const reviews = await reviewModel.find({
       user: req.user.id
     }).sort("-createdAt");
-
     responseHandler.ok(res, reviews);
   } catch {
     responseHandler.error(res);
@@ -51,7 +49,6 @@ const getReviewsOfUser = async (req, res) => {
 const getAll = async (req, res) => {
   try {
     const reviews = await reviewModel.find({}).sort("-createdAt");
-
     responseHandler.ok(res, reviews);
   } catch {
     responseHandler.error(res);

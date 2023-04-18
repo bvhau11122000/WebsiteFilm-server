@@ -17,11 +17,6 @@ const userSchema = new mongoose.Schema({
     required: true,
     select: false
   },
-  // salt: {
-  //   type: String,
-  //   required: true,
-  //   select: false
-  // }
 }, modelOptions);
 
 userSchema.methods.setPassword = function (password) {

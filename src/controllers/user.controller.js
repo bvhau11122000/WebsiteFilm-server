@@ -11,13 +11,7 @@ const signup = async (req, res) => {
     if (checkUser) return responseHandler.badrequest(res, "username already used");
    
     const user = new userModel({username,displayName, password});
-    console.log(user)
-    // user.displayName = displayName;
-    // user.username = username;
-    // user.password = password;
      user.save();
-    console.log(username, password, displayName);
-
     const token = jsonwebtoken.sign(
       { data: user.id },
       process.env.TOKEN_SECRET,
