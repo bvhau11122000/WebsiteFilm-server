@@ -9,6 +9,7 @@ const create = async (req, res) => {
      
       ...req.body
     });
+    console.log("hihi",Films);
     await Films.save();
     responseHandler.created(res, { 
       ...Films._doc,
